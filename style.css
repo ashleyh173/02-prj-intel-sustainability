@@ -1,1 +1,260 @@
-/* Add your CSS here */
+/* ===========================
+   Global Page Styling
+   =========================== */
+
+/* Set up the root colors and fonts for the entire page */
+:root {
+  color-scheme: dark;
+  color: #e2e8f0;
+  background: #050b16;
+  font-family: Inter, system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* Apply box-sizing to all elements so padding is included in width */
+* {
+  box-sizing: border-box;
+}
+
+/* ===========================
+   Body Styling
+   =========================== */
+
+/* Remove default margins and add padding around the page */
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 1.5rem;
+  /* Create a gradient background that fades from dark blue to darker blue */
+  background: linear-gradient(180deg, #050b16 0%, #08121f 100%);
+}
+
+/* Make all images responsive and block-level */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Center content and set a max width for readability */
+body > * {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===========================
+   Header / Hero Section
+   =========================== */
+
+/* Full-width header that spans the entire viewport */
+header {
+  padding: 1rem 0 1.5rem;
+  width: 100%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header container with dark background and shadow */
+header div {
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 0;
+  padding: 2rem;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+/* Logo styling */
+header img {
+  width: 150px;
+  height: auto;
+  display: inline-block;
+  margin: 0 auto 1.25rem;
+}
+
+/* Main heading with responsive sizing */
+header h1 {
+  font-size: clamp(2rem, 2.5vw, 3rem);
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.03em;
+  color: #f8fafc;
+}
+
+/* Subheading / description text */
+header p {
+  margin: 0 auto;
+  max-width: 34rem;
+  color: #cbd5e1;
+  text-align: center;
+}
+
+/* ===========================
+   Timeline Cards
+   =========================== */
+
+/* Timeline section container with horizontal scrolling */
+.timeline {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  /* Stack cards vertically on small screens */
+  gap: 1.5rem;
+}
+
+/* Individual timeline card styling with fixed width for horizontal layout */
+.timeline > div {
+  position: relative;
+  background: rgba(10, 17, 33, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 24px;
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.3);
+  padding: 1.75rem 1.75rem 1.5rem;
+  /* Flexbox item properties for responsive sizing */
+  flex: 1 1 100%;
+  /* Add smooth animation for hover effects */
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  overflow: hidden;
+}
+
+/* Colored accent bar on the left side of each card */
+.timeline > div::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  /* Gradient from cyan to green */
+  background: linear-gradient(180deg, #38bdf8, #22c55e);
+}
+
+/* Hover effect: lift card and enhance shadow */
+.timeline > div:hover {
+  transform: translateY(-4px);
+  border-color: rgba(148, 163, 184, 0.28);
+  box-shadow: 0 32px 58px rgba(0, 0, 0, 0.35);
+}
+
+/* Event title styling */
+.timeline h3 {
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #f8fafc;
+  /* Smooth transition for hover effects */
+  transition: color 200ms ease, transform 200ms ease;
+}
+
+/* Card description text */
+.timeline p {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 1rem;
+  /* Smooth transition for hover effects */
+  transition: color 200ms ease;
+}
+
+/* Year heading styling */
+.timeline h2 {
+  margin: 0 0 0.35rem;
+  font-size: 2rem;
+  color: #7dd3fc;
+  /* Smooth transition for hover effects */
+  transition: color 200ms ease;
+}
+
+/* Card hover interactivity: reveal details */
+.timeline > div:hover h2 {
+  /* Brighten the year on hover */
+  color: #0ea5e9;
+}
+
+.timeline > div:hover h3 {
+  /* Make title more vibrant and scale up slightly */
+  color: #22c55e;
+  transform: scale(1.05);
+}
+
+.timeline > div:hover p {
+  /* Make description text more prominent */
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+/* Card image styling */
+.timeline img {
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+  margin: 1rem 0;
+  object-fit: cover;
+  /* Smooth transition for hover effects */
+  transition: transform 200ms ease, filter 200ms ease;
+}
+
+/* Enhance image on card hover */
+.timeline > div:hover img {
+  /* Slightly enlarge and add brightness */
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Footer text below timeline */
+.timeline + p {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+
+/* Tablet screens and above: horizontal scrolling */
+@media (min-width: 768px) {
+  /* Switch to horizontal flex layout with scrolling */
+  .timeline {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 1rem;
+    scroll-behavior: smooth;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+  
+  .timeline h2 {
+    font-size: 2.25rem;
+  }
+  
+  /* 2 cards per view with flex sizing */
+  .timeline > div {
+    flex: 0 0 calc(50% - 0.75rem);
+  }
+}
+
+/* Large desktop screens: show 3 cards at a time */
+@media (min-width: 1200px) {
+  /* 3 cards per view with flex sizing */
+  .timeline > div {
+    flex: 0 0 calc(33.333% - 1rem);
+  }
+}
+
+/* Small screens: reduce padding for better mobile fit */
+@media (max-width: 640px) {
+  body {
+    padding: 1rem;
+  }
+
+  header div {
+    padding: 1.5rem;
+  }
+
+  .timeline > div {
+    padding: 1.5rem;
+  }
+}
+
